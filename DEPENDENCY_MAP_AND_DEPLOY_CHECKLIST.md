@@ -652,11 +652,6 @@ Notas de implementação recentes:
 - [x] Validar os acessos de plano em `components/auth/PlanGate.tsx` e garantir que as páginas de ML/perfis emergentes sejam protegidas quando necessário.
 
 #### Subtarefas de execução das prioridades médias
-- [ ] UI/UX e visual do sistema (antecipar esta etapa como validação antes do deploy final):
-  - revisar design das telas principais e fluxo de navegação do dashboard
-  - alinhar UI com a arquitetura de dados de projeto e contexto de usuário
-  - executar testes de usabilidade básicos e validar layout em desktop/mobile
-  - ajustar microinterações, estados de carregamento e mensagens de erro para o sistema real
 - [ ] Pipeline de deploy `staging`:
   - criar workflow dedicado em `.github/workflows/deploy-staging.yml` ou condição no deploy atual
   - configurar `CLOUDFLARE_PAGES_STAGING`, `RAILWAY_STAGING`, `FASTAPI_URL_STAGING`
@@ -683,8 +678,12 @@ Notas de implementação recentes:
   - documentar gaps de schema e tabelas faltantes
 
 ### 6.3 Prioridades baixas
-
-- [ ] Sincronizar documentação `README.md` e `DEPLOY_FUTURAMA_GUIDE.md` com o fluxo real.
+- [ ] UI/UX e visual do sistema (mover para prioridade baixa com foco em branding, onboarding e experiência inicial):
+  - [ ] Mudar o layout da página inicial para seguir o branding da marca Futurumã, usando as cores proprietárias e a fonte Inter.
+  - [ ] Atualizar o cabeçalho da página inicial para substituir o texto `Culture Pulse` pelo logo em `culturepulse-web/logo` no canto superior esquerdo.
+  - [ ] No Onboarding, remover a seção de Hipótese e deixar apenas a entrada de palavras-chave, objetivo, marca e contexto para direcionar a pesquisa.
+  - [ ] Melhorar a UI do Onboarding para tornar o fluxo mais claro, incluindo estados de carregamento e progresso visível.
+  - [ ] Após o Onboarding, apresentar micro partes do dashboard antes de levar o usuário diretamente à visualização completa, para mostrar o valor e o que será entregue.- [ ] Sincronizar documentação `README.md` e `DEPLOY_FUTURAMA_GUIDE.md` com o fluxo real.
 - [ ] Adicionar checklist de pré-deploy para variáveis de ambiente e secrets.
 - [ ] Criar um README de deploy por ambiente.
 - [ ] Validar se o backend local precisa de `Ollama` e documentar como habilitar.
