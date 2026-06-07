@@ -6,6 +6,14 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Deploy](https://img.shields.io/badge/Deploy-Auto-brightgreen.svg)](https://github.com/your-repo/actions)
 
+## 🔧 Resumo das Alterações de Arquitetura e ML
+
+- Autenticação FastAPI reforçada: `FASTAPI_TOKEN` obrigatório e o fallback de demo auth foi removido em produção.
+- Backend FastAPI configurado para deployment Docker no Railway; `FASTAPI_TOKEN` deve ser definido como secret do Railway no serviço backend.
+- Frontend Next.js alinhado com backend via variáveis de ambiente `NEXT_PUBLIC_FASTAPI_URL` e `PROJECT_ANALYSIS_FASTAPI_URL`.
+- Plano de ML atualizado para foco em `BusinessContext`, validação de fluxo de projeto e health checks de ML, com documentação central em `src_v8/autonomous_agent/ml_foundation/ML_PIPELINE_REFINEMENT_PLAN.md`.
+- Documentação consolidada para garantir que o deploy use os secrets corretos e evite tokens de demo.
+
 > **Sistema avançado de análise cultural brasileira com 8 APIs integradas, 15 círculos culturais e dashboard interativo.**
 
 ## 🚀 **Deploy Rápido**
