@@ -355,3 +355,24 @@ Transformar o motor em solução operacional, com monitoramento e qualidade.
 
 ## Observação final
 Este é o plano de refinamento para que o `ml_pipeline` deixe de ser uma prova de conceito e passe a ser o motor central de decisão. O próximo passo técnico é implementar a arquitetura de contexto e integrar os dashboards-chave ao endpoint de insights, com uma linha única de fluxo de dados reais e contexto de projeto.
+
+## Deploy de Auth Railway (etapa final)
+
+Como etapa final de produção, o backend FastAPI deve ser implantado no Railway com o auth real configurado via secret manager. Essa etapa chega depois de definirmos a arquitetura de Redis/cache e validações de persistência.
+
+Passo a passo:
+- Conectar o repo GitHub `Bruno94-stomps/culture-pulse-v10` ao Railway.
+- Criar ou configurar o serviço de backend usando `src_v8` como diretório raiz.
+- Verificar se Railway detecta `src_v8/Dockerfile` e/ou usar o Docker build padrão.
+- Adicionar secrets de deploy:
+  - `FASTAPI_TOKEN`
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_KEY`
+  - `PROJECT_ANALYSIS_FASTAPI_URL`
+  - `NEXT_PUBLIC_FASTAPI_URL`
+  - `NEXT_PUBLIC_API_URL`
+  - `ENVIRONMENT=production`
+  - `ENABLE_DEMO_AUTH=false`
+- Subir o serviço e validar logs de startup do FastAPI.
+- Testar os endpoints protegidos com `Authorization: Bearer <FASTAPI_TOKEN>`.
+- Confirmar que o deploy só usa auth real em produção e que demo auth é permitido apenas em desenvolvimento.

@@ -623,6 +623,12 @@ Notas de implementação recentes:
 - [ ] Adicionar checagem de plano no scheduler de coleta: `free` vs `pro` vs `executive` vs `enterprise`.
 - [ ] Adicionar checagem de plano no modelo/fluxo de aprendizado para ajustar frequência e profundidade da coleta e do uso de dados.
 - [ ] Confirmar se há integração Docker / Ollama ativa para que o backend use LLM como feature/input no ciclo de aprendizado.
+- [ ] [PRIORIDADE FINAL] Deploy do backend FastAPI no Railway com auth real e `FASTAPI_TOKEN` no secret manager, após definirmos a arquitetura Redis/cache.
+  - Conectar o repo `Bruno94-stomps/culture-pulse-v10` ao Railway.
+  - Definir o diretório de serviço como `src_v8` e usar `src_v8/Dockerfile`.
+  - Adicionar secrets: `FASTAPI_TOKEN`, `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `PROJECT_ANALYSIS_FASTAPI_URL`, `NEXT_PUBLIC_FASTAPI_URL`, `NEXT_PUBLIC_API_URL`, `ENVIRONMENT=production`, `ENABLE_DEMO_AUTH=false`.
+  - Testar com `Authorization: Bearer <FASTAPI_TOKEN>` os endpoints `/api/v8/ml/health` e `/api/v8/analysis/brand`.
+  - Garantir que o auth real esteja em produção e que o fallback de demo só funcione com `ENABLE_DEMO_AUTH=true` em development.
 - [x] Adicionar `supabase==2.30.0` a `src_v8/requirements_api.txt` para garantir que o backend possa usar `collectors.supabase_writer` e o fallback Supabase do `EnrichedDataReader`.
 - [ ] Validar que `SUPABASE_URL` resolve em DNS e que `cultural_signals` retorna dados reais em `GET /api/v8/dashboard/emerging-profiles` quando o pipeline estiver populado.
 - [ ] Revisar se as variáveis de ambiente de Streamlit (`STREAMLIT_PORT`, `STREAMLIT_ADDRESS`) ainda fazem parte do deploy principal ou se devem ser mantidas apenas como legacy/optional.
