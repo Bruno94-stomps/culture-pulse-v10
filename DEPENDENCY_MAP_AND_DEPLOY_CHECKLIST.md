@@ -652,6 +652,11 @@ Notas de implementação recentes:
 - [x] Validar os acessos de plano em `components/auth/PlanGate.tsx` e garantir que as páginas de ML/perfis emergentes sejam protegidas quando necessário.
 
 #### Subtarefas de execução das prioridades médias
+- [ ] UI/UX e visual do sistema (antecipar esta etapa como validação antes do deploy final):
+  - revisar design das telas principais e fluxo de navegação do dashboard
+  - alinhar UI com a arquitetura de dados de projeto e contexto de usuário
+  - executar testes de usabilidade básicos e validar layout em desktop/mobile
+  - ajustar microinterações, estados de carregamento e mensagens de erro para o sistema real
 - [ ] Pipeline de deploy `staging`:
   - criar workflow dedicado em `.github/workflows/deploy-staging.yml` ou condição no deploy atual
   - configurar `CLOUDFLARE_PAGES_STAGING`, `RAILWAY_STAGING`, `FASTAPI_URL_STAGING`
