@@ -1,0 +1,79 @@
+# 🐳 DOCKER COMPOSE V9.0
+# Configuração completa para desenvolvimento e produção
+
+version: '3.8'
+
+services:
+  # Culture Pulse V9.0 Main Application
+  culture-pulse-v9:
+    build: .
+    container_name: culture-pulse-v9
+    ports:
+      - "8000:8000"
+    command: python -m uvicorn api.main:app --host 0.0.0.0 --port 8000
+    environment:
+      - DEPLOYMENT_PLATFORM=docker
+      - PRODUCTION=true
+      - CULTURE_PULSE_VERSION=9.0
+      - ML_MODELS_ENABLED=true
+      - AUTONOMOUS_AGENT_ENABLED=true
+      - CACHE_ENABLED=true
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./data:/home/user/app/data
+      - ./logs:/home/user/app/logs
+      - ./cache:/home/user/app/cache
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - culture-pulse-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v8/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis para cache e session management
+  redis:
+    image: redis:7-alpine
+    container_name: culture-pulse-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - culture-pulse-network
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+
+  # Nginx reverse proxy (opcional para produção)
+  nginx:
+    image: nginx:alpine
+    container_name: culture-pulse-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/ssl:ro
+    depends_on:
+      - culture-pulse-v9
+    restart: unless-stopped
+    networks:
+      - culture-pulse-network
+    profiles:
+      - production
+
+volumes:
+  redis_data:
+    driver: local
+
+networks:
+  culture-pulse-network:
+    driver: bridge
+
+# Configurações para diferentes ambientes
+# Desenvolvimento: docker-compose up
+# Produção: docker-compose --profile production up

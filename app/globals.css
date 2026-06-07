@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cp-primary: #7C3AED;   /* roxo cultura */
+  --cp-accent:  #F59E0B;   /* âmbar calor */
+  --cp-success: #10B981;   /* verde sinal forte */
+  --cp-danger:  #EF4444;   /* vermelho tensão */
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+}

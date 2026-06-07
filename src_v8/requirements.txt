@@ -1,0 +1,88 @@
+# Culture Pulse V9.0 - Requirements
+# Dependências principais para todas as 8 APIs + ML + Cache + Alertas
+
+# FastAPI e servidor
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+websockets==11.0.3  # Para WebSocket de alertas
+
+# HTTP cliente async
+aiohttp==3.9.1
+requests==2.31.0
+
+# Supabase (S1.1 — persistência de sinais)
+supabase>=2.4.0
+
+# Legacy Streamlit dashboard dependencies (migrated to Next.js)
+# streamlit==1.28.2
+# plotly==5.17.0
+pandas==2.1.4
+numpy==1.25.2
+
+# APIs específicas
+pytrends==4.9.2  # Google Trends
+praw==7.7.1      # Reddit (opcional, usando requests)
+
+# Análise de dados e ML
+scikit-learn==1.3.2
+hdbscan==0.8.33    # Clustering hierárquico para públicos emergentes
+nltk==3.8.1
+textblob==0.17.1
+networkx==3.5      # Para grafos de relacionamento cultural
+duckdb==1.3.2      # Banco de dados analítico rápido
+joblib==1.3.2      # Para serialização de modelos ML
+
+# Cache e performance
+redis==5.0.1       # Cache distribuído Redis
+python-dotenv==1.0.0  # Variáveis de ambiente
+
+# Banco de dados
+psycopg2-binary==2.9.7  # PostgreSQL
+sqlalchemy==2.0.23      # ORM
+
+# Logging estruturado
+structlog==23.2.0
+python-json-logger==2.0.7
+
+# Monitoramento e métricas
+psutil==5.9.6      # Métricas do sistema
+prometheus-client==0.19.0  # Métricas Prometheus
+
+# Notificações e alertas
+smtplib-ssl==0.1.1  # Email seguro (já incluso no Python)
+
+# WhatsApp Bot & Multi-LLM (Integrado do MVP Root)
+openai>=1.3.0
+anthropic>=0.7.0
+Flask>=3.0.0
+Flask-CORS>=4.0.0
+Werkzeug>=3.0.0
+Pillow>=10.1.0
+
+# Desenvolvimento e testes
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2    # Cliente teste async
+
+# Segurança
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Compressão e serialização
+pickle5==0.0.12   # Serialização otimizada (Python < 3.8)
+
+# WebSockets para alertas tempo real
+python-socketio==5.10.0
+
+# Validação e parsing
+email-validator==2.1.0
+
+# Base64, datetime, json, time, os, random, logging, hashlib
+# São módulos built-in do Python, não precisam ser instalados
+
+# Dependências opcionais para funcionalidades extras:
+# opencv-python==4.8.1.78  # Para processamento de imagem
+# pillow==10.1.0           # Para manipulação de imagens
+# beautifulsoup4==4.12.2   # Para web scraping adicional
+# selenium==4.15.2         # Para automação web avançada

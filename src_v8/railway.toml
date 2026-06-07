@@ -1,0 +1,43 @@
+# 🚀 CULTURE PULSE V9.0 - RAILWAY DEPLOYMENT
+# Configuração para deploy no Railway.app
+
+[build]
+# Build command
+cmd = "pip install -r requirements.txt"
+
+[deploy]
+# Start command
+cmd = "python -m uvicorn api.main:app --host 0.0.0.0 --port $PORT"
+
+[env]
+# Environment variables
+DEPLOYMENT_PLATFORM = "railway"
+DEBUG = "false"
+PRODUCTION = "true"
+
+[settings]
+# Railway settings
+auto_deploy = true
+watch_patterns = ["api/**", "core/**", "config/**", "*.py"]
+
+# Resources
+memory = "1GB"
+cpu = "0.5"
+
+# Health check
+health_check_path = "/api/v8/health"
+health_check_timeout = 30
+
+# Networking
+domains = ["culture-pulse-v9.railway.app"]
+
+# Environment detection
+DEPLOYMENT_PLATFORM = "railway"
+DEBUG = "false"
+PRODUCTION = "true"
+
+# Culture Pulse specific
+CULTURE_PULSE_VERSION = "9.0"
+ML_MODELS_ENABLED = "true"
+AUTONOMOUS_AGENT_ENABLED = "true"
+CACHE_ENABLED = "true"

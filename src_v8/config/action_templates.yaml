@@ -1,0 +1,244 @@
+# ============================================================================
+# Culture Pulse V9.1 — Action Templates (F-3: FASE 1 Fundação)
+# ============================================================================
+# YAML-based action templates for recommended actions based on analysis.
+#
+# Structure:
+#   triggers:        conditions that activate the template
+#   actions:         recommended steps (ordered by priority)
+#   metadata:        urgency, time_horizon, plan_minimum
+#
+# Trigger conditions use operators: >, <, >=, <=, ==, in, contains
+# Variables available in triggers:
+#   - momentum          (0-100)
+#   - sentiment         (0-1, 0.5 = neutral)
+#   - authenticity      (0-1)
+#   - cultural_score    (0-1)
+#   - circle            (string: name of cultural circle)
+#   - platform          (string: youtube, reddit, spotify, etc.)
+#   - appropriation_risk (0-1)
+#   - velocity          (positive = accelerating, negative = decelerating)
+#   - volume            (integer: signal count)
+# ============================================================================
+
+# ── HIGH MOMENTUM, POSITIVE SENTIMENT ────────────────────────────────────────
+high_momentum_positive:
+  name: "Alta Ressonância Cultural Positiva"
+  description: "Sinal com alto momentum e sentimento positivo — oportunidade de surfar a onda."
+  triggers:
+    momentum: ">= 70"
+    sentiment: ">= 0.6"
+  actions:
+    - priority: 1
+      action: "Amplificar presença nos canais onde o sinal é mais forte"
+      detail: "Aumentar investimento em conteúdo e mídia na plataforma de origem"
+      type: "amplify"
+    - priority: 2
+      action: "Criar conteúdo nativo alinhado ao tema cultural"
+      detail: "Desenvolver peças que dialoguem autenticamente com o momento cultural"
+      type: "create_content"
+    - priority: 3
+      action: "Mapear influenciadores orgânicos do círculo cultural"
+      detail: "Identificar vozes autênticas que já estão falando sobre o tema"
+      type: "research"
+  metadata:
+    urgency: "high"
+    time_horizon: "1-2 semanas"
+    plan_minimum: "free"
+
+# ── HIGH MOMENTUM, NEGATIVE SENTIMENT ────────────────────────────────────────
+high_momentum_negative:
+  name: "Alta Ressonância com Risco"
+  description: "Sinal com alto momentum mas sentimento negativo — atenção à crise."
+  triggers:
+    momentum: ">= 70"
+    sentiment: "< 0.4"
+  actions:
+    - priority: 1
+      action: "Ativar monitoramento intensivo (alertas a cada 2h)"
+      detail: "Configurar alertas de mudança de sentimento com threshold de 0.1"
+      type: "monitor"
+    - priority: 2
+      action: "Preparar posicionamento institucional"
+      detail: "Redigir comunicado-base e alinhar porta-vozes para possível escalada"
+      type: "crisis_prep"
+    - priority: 3
+      action: "Analisar tensões culturais subjacentes"
+      detail: "Investigar se o sentimento negativo reflete tensão cultural profunda ou episódica"
+      type: "research"
+  metadata:
+    urgency: "critical"
+    time_horizon: "24-48 horas"
+    plan_minimum: "pro"
+
+# ── LOW MOMENTUM, EMERGING SIGNAL ────────────────────────────────────────────
+emerging_signal:
+  name: "Sinal Emergente"
+  description: "Sinal de baixo momentum mas com velocidade crescente — sinal precoce."
+  triggers:
+    momentum: "< 40"
+    velocity: "> 0"
+  actions:
+    - priority: 1
+      action: "Registrar no radar de tendências"
+      detail: "Adicionar ao tracking semanal de sinais fracos"
+      type: "track"
+    - priority: 2
+      action: "Análise profunda do círculo cultural"
+      detail: "Investigar o contexto cultural: de onde vem, para onde pode ir"
+      type: "research"
+    - priority: 3
+      action: "Preparar protótipos de conteúdo"
+      detail: "Criar rascunhos para ativação rápida caso o sinal ganhe tração"
+      type: "create_content"
+  metadata:
+    urgency: "low"
+    time_horizon: "2-4 semanas"
+    plan_minimum: "free"
+
+# ── HIGH APPROPRIATION RISK ──────────────────────────────────────────────────
+appropriation_risk:
+  name: "Risco de Apropriação Cultural"
+  description: "Análise indica risco de apropriação cultural — ação cautelar."
+  triggers:
+    appropriation_risk: ">= 0.6"
+  actions:
+    - priority: 1
+      action: "Pausar ativações relacionadas ao tema"
+      detail: "Suspender campanhas até revisão por especialista cultural"
+      type: "pause"
+    - priority: 2
+      action: "Consultar especialistas do círculo cultural"
+      detail: "Buscar validação com vozes legítimas da comunidade de origem"
+      type: "consult"
+    - priority: 3
+      action: "Redesenhar abordagem com co-criação"
+      detail: "Envolver representantes do círculo cultural no processo criativo"
+      type: "redesign"
+  metadata:
+    urgency: "high"
+    time_horizon: "imediato"
+    plan_minimum: "pro"
+
+# ── HIGH AUTHENTICITY ─────────────────────────────────────────────────────────
+high_authenticity:
+  name: "Alta Autenticidade Cultural"
+  description: "Marca percebida como autêntica no círculo — consolidar posição."
+  triggers:
+    authenticity: ">= 0.75"
+  actions:
+    - priority: 1
+      action: "Investir em storytelling da alma brasileira"
+      detail: "Criar narrativas que aprofundem a conexão cultural genuína"
+      type: "create_content"
+    - priority: 2
+      action: "Expandir para círculos culturais adjacentes"
+      detail: "Mapear conexões entre o círculo atual e círculos vizinhos"
+      type: "research"
+    - priority: 3
+      action: "Documentar o caso como benchmark de autenticidade"
+      detail: "Registrar aprendizados para replicar em outros círculos"
+      type: "document"
+  metadata:
+    urgency: "medium"
+    time_horizon: "1-3 meses"
+    plan_minimum: "free"
+
+# ── CIRCLE: UNKNOWN / EMERGENTE DESCONHECIDO ─────────────────────────────────
+unknown_circle:
+  name: "Círculo Emergente Desconhecido"
+  description: "Sinal não se encaixou em nenhum dos 16 círculos — possível novo círculo."
+  triggers:
+    circle: "== emergente_desconhecido"
+  actions:
+    - priority: 1
+      action: "Investigação antropológica do sinal"
+      detail: "Analisar contexto, linguagem, referências culturais do sinal"
+      type: "research"
+    - priority: 2
+      action: "Cruzar com sinais similares recentes"
+      detail: "Buscar padrões recorrentes que possam definir um novo círculo"
+      type: "analysis"
+    - priority: 3
+      action: "Alertar equipe de produto para atualização dos círculos"
+      detail: "Se padrão se confirmar, propor expansão dos 16 círculos"
+      type: "alert"
+  metadata:
+    urgency: "medium"
+    time_horizon: "1-2 semanas"
+    plan_minimum: "pro"
+
+# ── PLATFORM-SPECIFIC: YOUTUBE HIGH ENGAGEMENT ───────────────────────────────
+youtube_high_engagement:
+  name: "YouTube: Alto Engajamento"
+  description: "Sinais do YouTube com engajamento acima da média."
+  triggers:
+    platform: "== youtube"
+    momentum: ">= 60"
+  actions:
+    - priority: 1
+      action: "Ativar parceria com criadores do nicho"
+      detail: "Identificar YouTubers com público alinhado ao círculo cultural"
+      type: "partner"
+    - priority: 2
+      action: "Criar conteúdo em formato longo (10+ min)"
+      detail: "Algoritmo do YouTube favorece retenção — contar história completa"
+      type: "create_content"
+    - priority: 3
+      action: "Monitorar Shorts e Reels derivados"
+      detail: "Rastrear se o conteúdo está gerando derivações em formato curto"
+      type: "monitor"
+  metadata:
+    urgency: "medium"
+    time_horizon: "1-4 semanas"
+    plan_minimum: "free"
+
+# ── DECLINING SIGNAL ─────────────────────────────────────────────────────────
+declining_signal:
+  name: "Sinal em Declínio"
+  description: "Momentum alto mas velocidade negativa — ciclo de vida esgotando."
+  triggers:
+    momentum: ">= 50"
+    velocity: "< 0"
+  actions:
+    - priority: 1
+      action: "Avaliar custo-benefício de manter ativação"
+      detail: "Se ROI ainda positivo, manter com redução gradual de investimento"
+      type: "analysis"
+    - priority: 2
+      action: "Capturar learnings antes do fim do ciclo"
+      detail: "Documentar insights, métricas e aprendizados da ativação"
+      type: "document"
+    - priority: 3
+      action: "Pivotar para tendência emergente adjacente"
+      detail: "Identificar sinais emergentes no mesmo círculo cultural"
+      type: "research"
+  metadata:
+    urgency: "medium"
+    time_horizon: "1-2 semanas"
+    plan_minimum: "free"
+
+# ── MULTI-PLATFORM CONVERGENCE ───────────────────────────────────────────────
+multi_platform_convergence:
+  name: "Convergência Multi-Plataforma"
+  description: "Mesmo tema com momentum alto em 2+ plataformas — tendência forte."
+  triggers:
+    volume: ">= 10"
+    momentum: ">= 55"
+  actions:
+    - priority: 1
+      action: "Ativar estratégia omnichannel"
+      detail: "Adaptar mensagem para cada plataforma mantendo narrativa unificada"
+      type: "amplify"
+    - priority: 2
+      action: "Mapear jornada cultural cross-platform"
+      detail: "Entender como a conversa flui entre plataformas"
+      type: "research"
+    - priority: 3
+      action: "Considerar ação de PR/mídia espontânea"
+      detail: "Tendência forte pode ser pauta para veículos de mídia"
+      type: "pr"
+  metadata:
+    urgency: "high"
+    time_horizon: "1 semana"
+    plan_minimum: "pro"

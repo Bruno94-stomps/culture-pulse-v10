@@ -1,0 +1,135 @@
+
+=== write_100 ===
+Latência (ms):
+  Média: 0.02
+  P50: 0.01
+  P95: 0.05
+  P99: 0.15
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.02
+
+=== read_100 ===
+Latência (ms):
+  Média: 0.01
+  P50: 0.01
+  P95: 0.01
+  P99: 0.03
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.00
+
+=== mixed_100 ===
+Latência (ms):
+  Média: 0.01
+  P50: 0.01
+  P95: 0.02
+  P99: 0.04
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.01
+
+=== write_1000 ===
+Latência (ms):
+  Média: 0.02
+  P50: 0.01
+  P95: 0.04
+  P99: 0.13
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.00
+
+=== read_1000 ===
+Latência (ms):
+  Média: 0.01
+  P50: 0.01
+  P95: 0.02
+  P99: 0.07
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: -0.00
+  Máximo: 0.00
+
+=== mixed_1000 ===
+Latência (ms):
+  Média: 0.01
+  P50: 0.01
+  P95: 0.02
+  P99: 0.08
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.05
+
+=== write_10000 ===
+Latência (ms):
+  Média: 0.24
+  P50: 0.12
+  P95: 0.57
+  P99: 2.33
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.10
+
+=== read_10000 ===
+Latência (ms):
+  Média: 0.01
+  P50: 0.01
+  P95: 0.02
+  P99: 0.08
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.00
+
+=== mixed_10000 ===
+Latência (ms):
+  Média: 0.10
+  P50: 0.02
+  P95: 0.35
+  P99: 0.57
+
+CPU (%):
+  Média: 0.00
+  Máximo: 0.00
+
+Memória (MB):
+  Média: 0.00
+  Máximo: 0.00
